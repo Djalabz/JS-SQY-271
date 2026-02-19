@@ -30,22 +30,33 @@ function fetchPokemons() {
             let pokemonId = pokemons.indexOf(pokemon) + 1
             let imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonId}.png` 
 
-            // On crée une div, container pour chaque pokemon, un h3 et une image pour le nom et la photo 
-            let div = document.createElement("div")
-            let h3 = document.createElement("h3")
-            let img = document.createElement("img")
+            // Récupération du type avec un fetch à nouveau
+            fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`)
+            .then(res => res.json())
+            .then (data => {
+                // On recup le nom du type de pokemon à afficher 
+                let type = data.types[0].type.name
 
-            // On donne du contenu à notre h3 et une source pour notre image 
-            h3.textContent = name
-            img.src = imgUrl
-            div.append(h3, img)
-
-            // Enfin on vient insérer le tout dans notre container 
-            container.appendChild(div)
+                // On crée une div, container pour chaque pokemon, un h3 et une image pour le nom et la photo 
+                let div = document.createElement("div")
+                let h3 = document.createElement("h3")
+                let h4 = document.createElement("h4")
+                let img = document.createElement("img")
+    
+                // On donne du contenu à notre h3 et une source pour notre image 
+                h3.textContent = name
+                h4.textContent = type
+                img.src = imgUrl
+                div.append(h3, h4, img)
+    
+                // Enfin on vient insérer le tout dans notre container 
+                container.appendChild(div)
+            })
+            .catch(err => console.log(err))
         })
-
     })
     .catch(err => console.log(err))
 }
 
+// On appelle notre fonction afin qu'elle s'éxecute
 fetchPokemons()
