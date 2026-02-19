@@ -1,23 +1,49 @@
 // JEU AVEC MARIO 
 const mario = document.querySelector(".mario")
 
+let style = window.getComputedStyle(mario, null)
+
 window.addEventListener("keydown", (event) => {
-    console.log(event)
+
+    console.log(event.key)
 
     if (event.key == "ArrowLeft") {
+        // On récupère la position Left de Mario 
+        let positionLeft = style.getPropertyValue("left")
+        // On enlève de la string les caractères px
+        positionLeft = positionLeft.slice(0, -2)
+        // On convertit notre string en integer
+        positionLeft = parseInt(positionLeft)
+        // On enlève 2 (déplacement vers la gauche )
+        positionLeft = positionLeft - 4
+        // On met à jour le style de Mario depuis le JS 
+        mario.style.left = `${positionLeft}px`
 
-        console.log(mario.style)
-
-        // déplace Mario vers la gauche 
-        mario.style.left += 2
-
-        
     } else if (event.key == "ArrowRight") {
         // déplace vers la droite 
-    } else if (event.key == "Space") {
+        let positionLeft = style.getPropertyValue("left")
+        // On enlève de la string les caractères px
+        positionLeft = positionLeft.slice(0, -2)
+        // On convertit notre string en integer
+        positionLeft = parseInt(positionLeft)
+        // On enlève 2 (déplacement vers la gauche )
+        positionLeft = positionLeft + 4
+        // On met à jour le style de Mario depuis le JS 
+        mario.style.left = `${positionLeft}px`
+
+    } else if (event.code == "Space") {
         // mario saute 
+        console.log("le saut !")
+
+        mario.classList.add("jump")
+
+        setTimeout(() => mario.classList.remove("jump"), 300) 
+        
+        
+
     } else if (event.key == "ArrowDown" || event.key == "Control") {
         // Mario se baisse
+
     }
 
 })
