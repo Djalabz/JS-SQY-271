@@ -9,14 +9,15 @@
 // Quand on clique sur le bouton on doit chercher dans l'API le pokemon en question (en passant par son nom seulement)
 // Si on en trouve un on l'affiche, sinon un message "Pas de pokemon trouvé ..."
 
-// On recu^p le container destiné à recevoir les divs des Pokemons 
+// On recup le container destiné à recevoir les divs des Pokemons 
 const container = document.querySelector(".container-pokedex")
 const input = document.querySelector("input[type=text]")
 const submit = document.querySelector(".search-btn") 
 
 // L'URL qui permet de recup les pokemons (limité à 20 dans notre cas)
-const pokeUrl = "https://pokeapi.co/api/v2/pokemon"
+const pokeUrl = "https://pokeapi.co/api/v2/pokemon?limit=1500&offset=0"
 
+// Chargement initial des 20 premiers pokemons 
 window.addEventListener("DOMContentLoaded", () => {
     // On appelle notre fonction afin qu'elle s'éxecute
     fetchPokemons()
