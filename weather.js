@@ -32,6 +32,7 @@ function getLocation() {
     }
 } 
 
+
 async function fetchWeather(lat, lng) {
     // Requete API vers weather API
     let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=28a46ed081fa271f6e1f3b7415825368&units=metric`
