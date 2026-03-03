@@ -5,8 +5,6 @@ let style = window.getComputedStyle(mario, null)
 
 window.addEventListener("keydown", (event) => {
 
-    console.log(event.key)
-
     if (event.key == "ArrowLeft") {
         // On récupère la position Left de Mario 
         let positionLeft = style.getPropertyValue("left")
@@ -43,7 +41,5 @@ window.addEventListener("keydown", (event) => {
 
     } else if (event.key == "ArrowDown" || event.key == "Control") {
         // Mario se baisse
-
     }
-
 })
