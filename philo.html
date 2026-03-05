@@ -4,11 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Philo API</title>
-    <script src="philo.js" defer></script>
+    <script type="module" src="philo.js" defer></script>
+    <script src="https://unpkg.com/axios@1.13.2/dist/axios.min.js"></script>
 </head>
 <body>
 
-    <div class="app"></div>
+    <div class="app">
+
+        <h3 class="quote"></h3>
+        <h4 class="author"></h4>
+
+        <div>
+            <button class="refresh">Refresh</button>
+            <button class="wiki">Wiki</button>
+        </div>
+    </div>
     
 </body>
 </html>
